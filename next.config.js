@@ -11,6 +11,7 @@ const nextConfig = {
     ],
     unoptimized: true,
   },
+  output: 'standalone',
 };
 
 module.exports = nextConfig; 
