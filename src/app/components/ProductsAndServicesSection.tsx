@@ -64,7 +64,7 @@ export default function ProductsAndServicesSection({ id }: { id: string }) {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isAtStart, setIsAtStart] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(false);
-  const scrollTimeoutRef = useRef<NodeJS.Timeout>();
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
   const updateScrollState = useCallback(() => {
     if (scrollContainerRef.current) {
