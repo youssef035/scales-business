@@ -25,12 +25,13 @@ const products: Product[] = [
   }
 ];
 
-export default function Page({
+export default async function Page({
   params,
 }: {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }) {
-  const productId = parseInt(params.id);
+  const resolvedParams = await params;
+  const productId = parseInt(resolvedParams.id);
   const product = products.find(p => p.id === productId);
 
   if (!product) {
