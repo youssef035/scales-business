@@ -45,10 +45,10 @@ const translations = {
   'contact.sendMessage': 'Envoyer le Message',
   
   // Product Details
-  'product1.name': 'Balance Industrielle au Sol',
-  'product1.description': 'Balance industrielle robuste parfaite pour les entrepôts et les environnements industriels',
-  'product1.details': 'Nos balances industrielles au sol sont conçues pour résister aux environnements les plus difficiles. Avec des capacités allant de 1 000 à 50 000 livres, ces balances sont parfaites pour peser des palettes, des machines et de grands conteneurs. Les caractéristiques comprennent une construction en acier inoxydable, une protection IP68 et une technologie de cellule de charge avancée pour des mesures précises.',
-  'product1.price': 'À partir de 2499MAD',
+  'product1.name': 'INDICATEUR 120 SAURUS',
+  'product1.description': 'Indicateur Poids-Tare Professionnel avec boîtier robuste en ABS et protection IP54',
+  'product1.details': 'Indicateur Poids-Tare Professionnel avec boîtier robuste en ABS et protection IP54. Clavier étanche à 6 touches fonctionnelles, écran LED rouge haute visibilité, 7 voyants LED d\'indication d\'état. Compatible avec jusqu\'à 4 capteurs de 350Ω ou 8 capteurs de 700Ω. Plage de température de fonctionnement : -10°C à +40°C. Alimentation : adaptateur secteur AC/DC 100-240V, 50-60Hz. Batterie interne rechargeable 6V/4Ah avec autonomie d\'environ 24 heures. Interface RS232 intégrée. Unités sélectionnables : kg et lb. Homologué OIML classe III, jusqu\'à 3 000 divisions. Certification CE.',
+  'product1.price': 'Prix sur demande',
   
   'product2.name': 'Balance de Laboratoire',
   'product2.description': 'Balance de laboratoire de précision pour les applications scientifiques et de recherche',

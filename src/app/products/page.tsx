@@ -10,50 +10,73 @@ interface Product {
   description: string;
   image: string;
   category: 'product' | 'service';
+  details: string;
+  price: string;
 }
 
 const productsAndServices: Product[] = [
   {
     id: 1,
-    name: 'Industrial Floor Scale',
-    description: 'Heavy-duty floor scale perfect for warehouses and industrial settings',
-    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Industrial+Floor+Scale',
-    category: 'product'
+    name: 'INDICATEUR 120 SAURUS',
+    description: 'Indicateur Poids-Tare Professionnel avec boîtier robuste en ABS et protection IP54',
+    image: '/images/Products/INDICATEUR 120 SAURUS.jpg',
+    category: 'product',
+    details: 'Indicateur Poids-Tare Professionnel avec boîtier robuste en ABS et protection IP54. Clavier étanche à 6 touches fonctionnelles, écran LED rouge haute visibilité, 7 voyants LED d\'indication d\'état. Compatible avec jusqu\'à 4 capteurs de 350Ω ou 8 capteurs de 700Ω. Plage de température de fonctionnement : -10°C à +40°C. Alimentation : adaptateur secteur AC/DC 100-240V, 50-60Hz. Batterie interne rechargeable 6V/4Ah avec autonomie d\'environ 24 heures. Interface RS232 intégrée. Unités sélectionnables : kg et lb. Homologué OIML classe III, jusqu\'à 3 000 divisions. Certification CE.',
+    price: 'Prix sur demande'
   },
   {
     id: 2,
-    name: 'Laboratory Balance',
-    description: 'Precision laboratory scale for scientific and research applications',
-    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Laboratory+Balance',
-    category: 'product'
+    name: 'Industrial Floor Scale',
+    description: 'Heavy-duty floor scale perfect for warehouses and industrial settings',
+    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Industrial+Floor+Scale',
+    category: 'product',
+    details: '',
+    price: ''
   },
   {
     id: 3,
-    name: 'Retail Scale',
-    description: 'Compact and accurate scale for retail and commercial use',
-    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Retail+Scale',
-    category: 'product'
+    name: 'Laboratory Balance',
+    description: 'Precision laboratory scale for scientific and research applications',
+    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Laboratory+Balance',
+    category: 'product',
+    details: '',
+    price: ''
   },
   {
     id: 4,
-    name: 'Scale Calibration',
-    description: 'Professional calibration services to ensure accurate measurements',
-    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Scale+Calibration',
-    category: 'service'
+    name: 'Retail Scale',
+    description: 'Compact and accurate scale for retail and commercial use',
+    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Retail+Scale',
+    category: 'product',
+    details: '',
+    price: ''
   },
   {
     id: 5,
-    name: 'Scale Repair',
-    description: 'Expert repair services for all types of scales',
-    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Scale+Repair',
-    category: 'service'
+    name: 'Scale Calibration',
+    description: 'Professional calibration services to ensure accurate measurements',
+    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Scale+Calibration',
+    category: 'service',
+    details: '',
+    price: ''
   },
   {
     id: 6,
+    name: 'Scale Repair',
+    description: 'Expert repair services for all types of scales',
+    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Scale+Repair',
+    category: 'service',
+    details: '',
+    price: ''
+  },
+  {
+    id: 7,
     name: 'Scale Maintenance',
     description: 'Regular maintenance to keep your scales in optimal condition',
     image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Scale+Maintenance',
-    category: 'service'
+    category: 'service',
+    details: '',
+    price: ''
   }
 ];
 
@@ -144,7 +167,7 @@ export default function ProductsPage() {
           {filteredItems.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow flex flex-col h-full"
             >
               <div className="relative h-48">
                 <Image
@@ -167,14 +190,17 @@ export default function ProductsPage() {
                   </span>
                 </div>
               </div>
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-grow">
                 <h3 className="text-xl font-semibold text-primary-900 mb-2">
                   {item.name}
                 </h3>
-                <p className="text-secondary-600 mb-4">{item.description}</p>
-                <button className="w-full bg-primary-600 text-white py-2 rounded-md hover:bg-primary-700 transition-colors">
+                <p className="text-secondary-600 mb-4 line-clamp-2">{item.description}</p>
+                <a 
+                  href={`/products/${item.id}`}
+                  className="w-full bg-primary-600 text-white py-2 rounded-md hover:bg-primary-700 transition-colors block text-center mt-auto"
+                >
                   {t('products.viewDetails')}
-                </button>
+                </a>
               </div>
             </div>
           ))}
