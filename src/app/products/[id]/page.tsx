@@ -25,14 +25,11 @@ const products: Product[] = [
   }
 ];
 
-interface PageProps {
-  params: {
-    id: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
-}
-
-export default function ProductPage({ params }: PageProps) {
+export default function Page({
+  params,
+}: {
+  params: { id: string }
+}) {
   const productId = parseInt(params.id);
   const product = products.find(p => p.id === productId);
 
