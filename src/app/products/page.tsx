@@ -14,7 +14,7 @@ interface Product {
   price: string;
 }
 
-const productsAndServices: Product[] = [
+const products: Product[] = [
   {
     id: 1,
     name: 'INDICATEUR 120 SAURUS',
@@ -97,61 +97,7 @@ const productsAndServices: Product[] = [
     price: 'Prix sur demande'
   },
   {
-    id: 10,
-    name: 'Industrial Floor Scale',
-    description: 'Heavy-duty floor scale perfect for warehouses and industrial settings',
-    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Industrial+Floor+Scale',
-    categories: ['product', 'plateforme_de_pesage'],
-    details: '',
-    price: ''
-  },
-  {
-    id: 11,
-    name: 'Laboratory Balance',
-    description: 'Precision laboratory scale for scientific and research applications',
-    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Laboratory+Balance',
-    categories: ['product', 'balance_et_indicateur'],
-    details: '',
-    price: ''
-  },
-  {
-    id: 12,
-    name: 'Retail Scale',
-    description: 'Compact and accurate scale for retail and commercial use',
-    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Retail+Scale',
-    categories: ['product', 'balance_et_indicateur'],
-    details: '',
-    price: ''
-  },
-  {
     id: 13,
-    name: 'Scale Calibration',
-    description: 'Professional calibration services to ensure accurate measurements',
-    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Scale+Calibration',
-    categories: ['service'],
-    details: '',
-    price: ''
-  },
-  {
-    id: 14,
-    name: 'Scale Repair',
-    description: 'Expert repair services for all types of scales',
-    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Scale+Repair',
-    categories: ['service'],
-    details: '',
-    price: ''
-  },
-  {
-    id: 15,
-    name: 'Scale Maintenance',
-    description: 'Regular maintenance to keep your scales in optimal condition',
-    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Scale+Maintenance',
-    categories: ['service'],
-    details: '',
-    price: ''
-  },
-  {
-    id: 16,
     name: 'BALANCE À PLATEAU BRS – BREHM',
     description: 'Balance industrielle renforcée, idéale pour les environnements humides grâce à sa conception tout inox et son capteur IP68',
     image: '/images/Products/balance-plateau.png',
@@ -160,7 +106,7 @@ const productsAndServices: Product[] = [
     price: 'Prix sur demande'
   },
   {
-    id: 17,
+    id: 14,
     name: 'PLATEFORME DE PESAGE ACIER',
     description: 'Plateforme robuste avec surface gaufrée, idéale pour le pesage industriel de chariots, bacs et linge en environnement exigeant',
     image: '/images/Products/acier.png',
@@ -169,13 +115,40 @@ const productsAndServices: Product[] = [
     price: 'Prix sur demande'
   },
   {
-    id: 18,
+    id: 15,
     name: 'PLATEFORME DE PESAGE EN INOX',
     description: 'Plateforme robuste et personnalisable en acier inoxydable AISI 304, conçue pour un pesage précis et fiable, même dans des environnements industriels exigeants',
     image: '/images/Products/inox.png',
     categories: ['product', 'plateforme_de_pesage'],
     details: 'Plateforme de pesage en inox. Spécifications : Modèles Disponibles : P1250INOXN (Max 3000 kg, dimensions 1250 x 1250 mm), P1500INOXN (Max 3000 kg, dimensions 1500 x 1500 mm), Plateformes sur demande : Personnalisables jusqu\'à 2500 x 2500 mm et 6000 kg. Construction : Matériau : Acier inoxydable AISI 304, Plateau de charge d\'inspection côté capteurs et boîte de jonction inox, Boîte de jonction avec carte d\'égalisation et câble de sortie à 6 fils (5 m). Capteurs de pesage : 4 capteurs de cisaillement inox 17-4PH, protection IP68. Précision : Classe de précision : C3 (selon OIML R60). Caractéristiques supplémentaires : Pieds articulés en inox AISI 304, avec centrage automatique à bille, 2 trous M12 pour anneaux de levage.',
     price: 'Prix sur demande'
+  },
+  {
+    id: 16,
+    name: 'Scale Calibration',
+    description: 'Professional calibration services to ensure accurate measurements',
+    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Scale+Calibration',
+    categories: ['service'],
+    details: '',
+    price: ''
+  },
+  {
+    id: 17,
+    name: 'Scale Repair',
+    description: 'Expert repair services for all types of scales',
+    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Scale+Repair',
+    categories: ['service'],
+    details: '',
+    price: ''
+  },
+  {
+    id: 18,
+    name: 'Scale Maintenance',
+    description: 'Regular maintenance to keep your scales in optimal condition',
+    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Scale+Maintenance',
+    categories: ['service'],
+    details: '',
+    price: ''
   }
 ];
 
@@ -184,7 +157,7 @@ export default function ProductsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filter, setFilter] = useState<'all' | 'product' | 'service' | 'balance_et_indicateur' | 'plateforme_de_pesage'>('all');
 
-  const filteredItems = productsAndServices.filter(item => {
+  const filteredItems = products.filter(item => {
     const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesFilter = filter === 'all' || item.categories.includes(filter);
     return matchesSearch && matchesFilter;
