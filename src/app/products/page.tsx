@@ -9,7 +9,7 @@ interface Product {
   name: string;
   description: string;
   image: string;
-  category: 'product' | 'service';
+  categories: ('product' | 'service' | 'balance_et_indicateur' | 'plateforme_de_pesage')[];
   details: string;
   price: string;
 }
@@ -20,74 +20,173 @@ const productsAndServices: Product[] = [
     name: 'INDICATEUR 120 SAURUS',
     description: 'Indicateur Poids-Tare Professionnel avec boîtier robuste en ABS et protection IP54',
     image: '/images/Products/INDICATEUR 120 SAURUS.jpg',
-    category: 'product',
+    categories: ['product', 'balance_et_indicateur'],
     details: 'Indicateur Poids-Tare Professionnel avec boîtier robuste en ABS et protection IP54. Clavier étanche à 6 touches fonctionnelles, écran LED rouge haute visibilité, 7 voyants LED d\'indication d\'état. Compatible avec jusqu\'à 4 capteurs de 350Ω ou 8 capteurs de 700Ω. Plage de température de fonctionnement : -10°C à +40°C. Alimentation : adaptateur secteur AC/DC 100-240V, 50-60Hz. Batterie interne rechargeable 6V/4Ah avec autonomie d\'environ 24 heures. Interface RS232 intégrée. Unités sélectionnables : kg et lb. Homologué OIML classe III, jusqu\'à 3 000 divisions. Certification CE.',
     price: 'Prix sur demande'
   },
   {
     id: 2,
-    name: 'Industrial Floor Scale',
-    description: 'Heavy-duty floor scale perfect for warehouses and industrial settings',
-    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Industrial+Floor+Scale',
-    category: 'product',
-    details: '',
-    price: ''
+    name: 'INDICATEUR 200',
+    description: 'Indicateur Poids-Tare Professionnel avec boîtier ABS et protection IP54',
+    image: '/images/Products/IND 200.jpeg',
+    categories: ['product', 'balance_et_indicateur'],
+    details: 'Indicateur Poids-Tare Professionnel avec boîtier ABS et protection IP54. Clavier étanche à 6 touches fonctionnelles + touche ON/OFF, grand écran LCD rétroéclairé de 6 chiffres (40 mm). Compatible avec jusqu\'à 4 capteurs de 350Ω ou 8 capteurs de 800Ω. Alimentation : adaptateur secteur AC/DC 100-240V, 50-60Hz. Batterie rechargeable 6V/4Ah avec autonomie d\'environ 80 heures (rétroéclairage activé et RS232 ON) ou jusqu\'à 320 heures (rétroéclairage désactivé et RS232 OFF). Interface RS232 intégrée. Unités sélectionnables : kg, g ou t. Homologué OIML classe III, 3 000 divisions. Certification CE.',
+    price: 'Prix sur demande'
   },
   {
     id: 3,
-    name: 'Laboratory Balance',
-    description: 'Precision laboratory scale for scientific and research applications',
-    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Laboratory+Balance',
-    category: 'product',
-    details: '',
-    price: ''
+    name: 'INDICATEUR SAURUS 300',
+    description: 'Indicateur de Poids SAURUS 300 - Performance et durabilité en inox pour un usage intensif et professionnel',
+    image: '/images/Products/IND-300.webp',
+    categories: ['product', 'balance_et_indicateur'],
+    details: 'Indicateur de Poids SAURUS 300 - Performance et durabilité en inox pour un usage intensif et professionnel. Boîtier en acier inoxydable (INOX) avec protection IP65. Clavier étanche à 6 touches de fonction, écran LCD lisible en toutes conditions. Compatible avec jusqu\'à 4 capteurs de 350Ω ou 8 capteurs de 700Ω. Alimentation : transformateur AC/DC 100-240V, 50-60Hz. Batterie interne rechargeable 6V/4Ah avec autonomie d\'environ 24 heures d\'utilisation continue. Interface RS232 intégrée pour connexion à PC, imprimante, afficheur répétiteur. Unités sélectionnables : kg et lb. Gravité configurable selon la zone géographique. Précision jusqu\'à 100 000 divisions (non homologuées).',
+    price: 'Prix sur demande'
   },
   {
     id: 4,
-    name: 'Retail Scale',
-    description: 'Compact and accurate scale for retail and commercial use',
-    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Retail+Scale',
-    category: 'product',
-    details: '',
-    price: ''
+    name: 'BALANCE BREHM B10',
+    description: 'Balance de pesage simple, compacte et performante pour une utilisation quotidienne',
+    image: '/images/Products/B10.png',
+    categories: ['product', 'balance_et_indicateur'],
+    details: 'Balance de pesage simple, compacte et performante pour une utilisation quotidienne. Capacité de 3 kg à 15 kg (selon modèle). Protection IP54 contre la poussière et les éclaboussures. Plateau en acier inoxydable (230 × 190 mm). Pieds réglables en hauteur pour une stabilité optimale. Écran LED rouge avec 6 chiffres de 20 mm de hauteur. 3 touches avec 7 symboles d\'indication. Unités sélectionnables : kg et lb. Fonctions de pesage : Zéro, Tare, Brut, Net. Protection contre les surcharges intégrée. Alimentation par batterie interne rechargeable avec adaptateur secteur AC 9V fourni.',
+    price: 'Prix sur demande'
   },
   {
     id: 5,
-    name: 'Scale Calibration',
-    description: 'Professional calibration services to ensure accurate measurements',
-    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Scale+Calibration',
-    category: 'service',
-    details: '',
-    price: ''
+    name: 'INDICATEUR BREHM DIS 100',
+    description: 'Indicateur de Poids BREHM DIS 100 - Polyvalent et fiable, idéal pour les applications de pesage industrielles standard',
+    image: '/images/Products/DIS100.png',
+    categories: ['product', 'balance_et_indicateur'],
+    details: 'Indicateur de Poids BREHM DIS 100 - Polyvalent et fiable, idéal pour les applications de pesage industrielles standard. Boîtier en plastique ABS avec protection IP54. Support colonne inclus pour une installation facilitée. Plage de température de fonctionnement : -10°C à +40°C. Écran LED rouge avec 6 chiffres de 20 mm. 7 LEDs d\'indication d\'état/fonction. Clavier étanche à 6 touches de fonction. Unités sélectionnables : kg et lb. Gravité configurable selon la localisation géographique. Compatible avec jusqu\'à 4 capteurs de 350Ω ou 8 capteurs de 700Ω. Alimentation : adaptateur secteur AC/DC 100-240V, 50-60Hz. Batterie interne rechargeable 6V/4Ah avec autonomie d\'environ 24 heures. Interface RS232 pour connexion PC, imprimante, afficheur répétiteur. Déconnexion automatique configurable. Homologué OIML classe III, 3 000 divisions. Certification CE.',
+    price: 'Prix sur demande'
   },
   {
     id: 6,
-    name: 'Scale Repair',
-    description: 'Expert repair services for all types of scales',
-    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Scale+Repair',
-    category: 'service',
+    name: 'INDICATEUR BREHM DIS 300',
+    description: 'Indicateur de Poids BREHM DIS 300 - Un indicateur robuste et précis, conçu pour répondre aux besoins de pesage professionnels',
+    image: '/images/Products/DIS300.png',
+    categories: ['product', 'balance_et_indicateur'],
+    details: 'Indicateur de Poids BREHM DIS 300 - Un indicateur robuste et précis, conçu pour répondre aux besoins de pesage professionnels. Boîtier en ABS avec protection IP54 contre poussière et éclaboussures. Support colonne inclus pour une installation facilitée. Plage de température de fonctionnement : -10°C à +40°C. Écran LED rouge avec 6 chiffres de 20 mm. 7 LEDs d\'indication d\'état et fonction. Clavier étanche à 6 touches de fonction. Unités sélectionnables : kg et lb. Gravité configurable selon la zone d\'utilisation. Compatible avec jusqu\'à 4 capteurs de 350Ω ou 8 capteurs de 700Ω. Alimentation : adaptateur secteur AC/DC 100-240V, 50-60Hz. Batterie interne rechargeable 6V/4Ah avec autonomie d\'environ 24 heures. Interface RS232 pour connexion à un PC, imprimante, ou répétiteur. Déconnexion automatique réglable. Homologué OIML classe III, 3 000 divisions. Certification CE.',
+    price: 'Prix sur demande'
+  },
+  {
+    id: 7,
+    name: 'BALANCE DESICCATEUR',
+    description: 'Analyse rapide et précise de l\'humidité, avec un séchage uniforme pour des résultats constants',
+    image: '/images/Products/ohaus.jpg',
+    categories: ['product', 'balance_et_indicateur'],
+    details: 'Balance Dessiccateur - Analyse rapide et précise de l\'humidité, avec un séchage uniforme pour des résultats constants. Type d\'analyse : Analyse de l\'humidité. Chauffage rapide à halogène avec technologie infrarouge. Navigation ergonomique pour une utilisation simplifiée. Mémoire de plus de 100 méthodes enregistrables. Séchage uniforme pour garantir des résultats précis et répétables. Quatre profils de séchage pour des performances flexibles et puissantes. Critères d\'arrêt pour exécution automatique du test. Nettoyage facile sans outils supplémentaires.',
+    price: 'Prix sur demande'
+  },
+  {
+    id: 8,
+    name: 'TRANSPALETTE MANUEL PESEUR',
+    description: 'Combine transport et pesage avec précision, idéal pour un usage industriel intensif',
+    image: '/images/Products/transpalette-peseur.png',
+    categories: ['product', 'plateforme_de_pesage'],
+    details: 'Transpalette Manuel Peseur - Combine transport et pesage avec précision, idéal pour un usage industriel intensif. Caractéristiques Générales : Fonction de manutention et pesage intégrés. Utilisation simple, robuste et adaptée aux environnements industriels. Structure en châssis acier peint pour une grande résistance. Roues directrices en caoutchouc et galets doubles en Vulkolan. Indicateur de pesage numérique avec affichage LCD rétro-éclairé à haut contraste pour une lecture aisée même en faible luminosité. Fonctions disponibles : Remise à zéro, Tare, Totalisation, Comptage de pièces simple et précis. 4 capteurs inox à jauge de contrainte avec protection IP68, résistants à l\'eau et à la poussière. Alimentation par batterie rechargeable 12V avec autonomie d\'environ 3 jours, chargeur inclus. Connectivité par sortie RS232 bidirectionnelle pour connexion à PC ou imprimante.',
+    price: 'Prix sur demande'
+  },
+  {
+    id: 9,
+    name: 'BALANCE INDUSTRIELLE B30 BREHM',
+    description: 'Robuste, polyvalente et précise, elle s\'adapte parfaitement à toutes vos opérations de pesage industriel',
+    image: '/images/Products/B30.png',
+    categories: ['product', 'balance_et_indicateur'],
+    details: 'Balance Industrielle B30 Brehm - Robuste, polyvalente et précise, elle s\'adapte parfaitement à toutes vos opérations de pesage industriel. Caractéristiques Générales : Écran LCD rétroéclairé. Boîtier résistant en ABS. Plateau en acier inoxydable (300 x 230 mm). Protection IP44 contre poussière et éclaboussures. 7 touches de fonction. Fonctions : Zéro, Tare, Brut/Net, Comptage de pièces. Construction et Utilisation : Protection contre les surcharges, pieds réglables en hauteur, niveau à bulle intégré, blister inclus. Unités de mesure : g, kg, t, lb, oz. Connectivité : Sortie RS232 (en option) - format PC. Conditions d\'utilisation : Température de fonctionnement de 0°C à +40°C. Alimentation : Batterie interne rechargeable avec adaptateur AC/DC 230Vac 50Hz. Modèles disponibles : B30-3 (3 kg, précision 0,5/1 g), B30-6 (6 kg, précision 1/2 g), B30-15 (15 kg, précision 2/5 g), B30-30 (30 kg, précision 5/10 g).',
+    price: 'Prix sur demande'
+  },
+  {
+    id: 10,
+    name: 'Industrial Floor Scale',
+    description: 'Heavy-duty floor scale perfect for warehouses and industrial settings',
+    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Industrial+Floor+Scale',
+    categories: ['product', 'plateforme_de_pesage'],
     details: '',
     price: ''
   },
   {
-    id: 7,
+    id: 11,
+    name: 'Laboratory Balance',
+    description: 'Precision laboratory scale for scientific and research applications',
+    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Laboratory+Balance',
+    categories: ['product', 'balance_et_indicateur'],
+    details: '',
+    price: ''
+  },
+  {
+    id: 12,
+    name: 'Retail Scale',
+    description: 'Compact and accurate scale for retail and commercial use',
+    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Retail+Scale',
+    categories: ['product', 'balance_et_indicateur'],
+    details: '',
+    price: ''
+  },
+  {
+    id: 13,
+    name: 'Scale Calibration',
+    description: 'Professional calibration services to ensure accurate measurements',
+    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Scale+Calibration',
+    categories: ['service'],
+    details: '',
+    price: ''
+  },
+  {
+    id: 14,
+    name: 'Scale Repair',
+    description: 'Expert repair services for all types of scales',
+    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Scale+Repair',
+    categories: ['service'],
+    details: '',
+    price: ''
+  },
+  {
+    id: 15,
     name: 'Scale Maintenance',
     description: 'Regular maintenance to keep your scales in optimal condition',
     image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Scale+Maintenance',
-    category: 'service',
+    categories: ['service'],
     details: '',
     price: ''
+  },
+  {
+    id: 16,
+    name: 'BALANCE À PLATEAU BRS – BREHM',
+    description: 'Balance industrielle renforcée, idéale pour les environnements humides grâce à sa conception tout inox et son capteur IP68',
+    image: '/images/Products/balance-plateau.png',
+    categories: ['product', 'plateforme_de_pesage'],
+    details: 'Balance à plateau BRS – Brehm - Balance industrielle renforcée, idéale pour les environnements humides grâce à sa conception tout inox et son capteur IP68. Spécifications : Capacité de 30 kg à 600 kg. Châssis en tube rond en acier inoxydable. Plateau et colonne en acier inoxydable renforcé. Capteur Zemic inox, homologué OIML, IP68. Protection globale IP65. Affichage et Fonctions : Indicateur compatible BREHM DIS400. Écran LCD rétroéclairé de 52 mm. Fonctions intégrées : Brut/Net/Tare, Comptage de pièces, Accumulation, Contrôle de poids, Pesée d\'animaux. Performance : Nombre de divisions 6000d (OIML), Précision d\'affichage jusqu\'à 30 000d. Unités : g, kg, lb. Connectivité : Sortie RS232 (en option). Alimentation : Batterie rechargeable 6V/1,3 Ah, autonomie 60 h, Secteur 220V. Conditions d\'utilisation : Température de fonctionnement de -10°C à +40°C.',
+    price: 'Prix sur demande'
+  },
+  {
+    id: 17,
+    name: 'PLATEFORME DE PESAGE ACIER',
+    description: 'Plateforme robuste avec surface gaufrée, idéale pour le pesage industriel de chariots, bacs et linge en environnement exigeant',
+    image: '/images/Products/acier.png',
+    categories: ['product', 'plateforme_de_pesage'],
+    details: 'Plateforme de pesage Acier – Pesage chariots et bacs de blanchisserie. Spécifications : Dimensions du plateau disponibles : 1000 x 1000 mm, 1200 x 1200 mm, 1500 x 1500 mm. Applications : Pesage statique et dynamique, Comptage de pièces, Contrôle du poids, Pesée d\'animaux. Caractéristiques techniques : Construction solide adaptée aux milieux industriels, Surface gaufrée antidérapante pour une meilleure adhérence, Rampes d\'accès disponibles en option pour un chargement facile, Compatibilité : fonctionne avec plusieurs types d\'indicateurs, Câble blindé de 5 mètres environ. Capacités de charge : De 1000 kg à 3000 kg, Précision : de 0,2 g à 0,5 g.',
+    price: 'Prix sur demande'
+  },
+  {
+    id: 18,
+    name: 'PLATEFORME DE PESAGE EN INOX',
+    description: 'Plateforme robuste et personnalisable en acier inoxydable AISI 304, conçue pour un pesage précis et fiable, même dans des environnements industriels exigeants',
+    image: '/images/Products/inox.png',
+    categories: ['product', 'plateforme_de_pesage'],
+    details: 'Plateforme de pesage en inox. Spécifications : Modèles Disponibles : P1250INOXN (Max 3000 kg, dimensions 1250 x 1250 mm), P1500INOXN (Max 3000 kg, dimensions 1500 x 1500 mm), Plateformes sur demande : Personnalisables jusqu\'à 2500 x 2500 mm et 6000 kg. Construction : Matériau : Acier inoxydable AISI 304, Plateau de charge d\'inspection côté capteurs et boîte de jonction inox, Boîte de jonction avec carte d\'égalisation et câble de sortie à 6 fils (5 m). Capteurs de pesage : 4 capteurs de cisaillement inox 17-4PH, protection IP68. Précision : Classe de précision : C3 (selon OIML R60). Caractéristiques supplémentaires : Pieds articulés en inox AISI 304, avec centrage automatique à bille, 2 trous M12 pour anneaux de levage.',
+    price: 'Prix sur demande'
   }
 ];
 
 export default function ProductsPage() {
   const { t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState('');
-  const [filter, setFilter] = useState<'all' | 'product' | 'service'>('all');
+  const [filter, setFilter] = useState<'all' | 'product' | 'service' | 'balance_et_indicateur' | 'plateforme_de_pesage'>('all');
 
   const filteredItems = productsAndServices.filter(item => {
     const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesFilter = filter === 'all' || item.category === filter;
+    const matchesFilter = filter === 'all' || item.categories.includes(filter);
     return matchesSearch && matchesFilter;
   });
 
@@ -160,6 +259,26 @@ export default function ProductsPage() {
             >
               {t('products.services')}
             </button>
+            <button
+              onClick={() => setFilter('balance_et_indicateur')}
+              className={`px-4 py-2 rounded-md ${
+                filter === 'balance_et_indicateur'
+                  ? 'bg-primary-600 text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              Balance et Indicateur
+            </button>
+            <button
+              onClick={() => setFilter('plateforme_de_pesage')}
+              className={`px-4 py-2 rounded-md ${
+                filter === 'plateforme_de_pesage'
+                  ? 'bg-primary-600 text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              Plateforme de Pesage
+            </button>
           </div>
         </div>
 
@@ -174,17 +293,20 @@ export default function ProductsPage() {
                   src={item.image}
                   alt={item.name}
                   fill
-                  className="object-cover"
+                  className="object-contain"
+                  quality={100}
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <div className="absolute top-4 right-4">
                   <span
                     className={`px-3 py-1 rounded-full text-sm font-medium ${
-                      item.category === 'product'
+                      item.categories.includes('product')
                         ? 'bg-primary-100 text-primary-600'
                         : 'bg-secondary-100 text-secondary-600'
                     }`}
                   >
-                    {item.category === 'product'
+                    {item.categories.includes('product')
                       ? t('products.product')
                       : t('products.service')}
                   </span>
