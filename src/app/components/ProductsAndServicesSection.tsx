@@ -126,30 +126,30 @@ const productsAndServices: Product[] = [
   },
   {
     id: 16,
-    name: 'Scale Calibration',
-    description: 'Professional calibration services to ensure accurate measurements',
-    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Scale+Calibration',
+    name: 'Étalonnage de Balances',
+    description: 'Services professionnels d\'étalonnage pour garantir des mesures précises et conformes aux normes',
+    image: '/images/services/calib.jpeg',
     categories: ['service'],
-    details: '',
-    price: ''
+    details: 'Nous proposons des services professionnels d\'étalonnage de balances pour garantir la précision et la conformité de vos instruments de pesage. Grâce à notre expertise et à nos équipements certifiés, nous assurons un étalonnage conforme aux normes en vigueur, adapté aux secteurs industriels, commerciaux et laboratoires. Faites confiance à notre savoir-faire pour maintenir la fiabilité de vos mesures.',
+    price: 'Prix sur demande'
   },
   {
     id: 17,
-    name: 'Scale Repair',
-    description: 'Expert repair services for all types of scales',
-    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Scale+Repair',
+    name: 'Réparation de Balances',
+    description: 'Services de réparation experts pour tous types de balances',
+    image: '/images/services/reparation.jpeg',
     categories: ['service'],
-    details: '',
-    price: ''
+    details: 'Notre équipe d\'experts propose des services de réparation complets pour tous types de balances. Nous intervenons rapidement pour diagnostiquer et réparer les problèmes, qu\'il s\'agisse de dysfonctionnements mécaniques, électroniques ou de problèmes de précision. Nous utilisons des pièces de rechange d\'origine et suivons les protocoles de réparation les plus stricts pour garantir la qualité et la durabilité de nos interventions.',
+    price: 'Prix sur demande'
   },
   {
     id: 18,
-    name: 'Scale Maintenance',
-    description: 'Regular maintenance to keep your scales in optimal condition',
-    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Scale+Maintenance',
+    name: 'Maintenance de Balances',
+    description: 'Maintenance préventive et corrective pour garantir le bon fonctionnement et prolonger la durée de vie de vos balances',
+    image: '/images/services/mainten.jpg',
     categories: ['service'],
-    details: '',
-    price: ''
+    details: 'Nous assurons la maintenance préventive et corrective de vos balances afin de garantir leur bon fonctionnement et prolonger leur durée de vie. Nos interventions régulières permettent de prévenir les pannes, réduire les temps d\'arrêt et maintenir la précision de vos instruments de pesage. Notre équipe intervient sur site avec des équipements adaptés et selon un planning flexible, pour s\'adapter à vos contraintes opérationnelles. Faites confiance à notre expertise pour préserver la fiabilité de vos balances au quotidien.',
+    price: 'Prix sur demande'
   }
 ];
 
@@ -217,19 +217,19 @@ export default function ProductsAndServicesSection({ id }: { id: string }) {
   });
 
   return (
-    <section id={id} className="py-20 bg-white" aria-label="Products and Services">
+    <section id={id} className="py-20 bg-white" aria-label="Produits et Services">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <RevealOnScroll>
           <div className="flex justify-between items-center mb-12">
             <h2 className="text-4xl font-bold text-primary-900">
-              {t('products.title')}
+              Nos Produits et Services
             </h2>
             <a 
               href="/products" 
               className="bg-primary-600 text-white px-6 py-2 rounded-md hover:bg-primary-700 transition-colors"
-              aria-label="View all products and services"
+              aria-label="Voir tous les produits et services"
             >
-              {t('products.viewMore')}
+              Voir plus
             </a>
           </div>
         </RevealOnScroll>
@@ -239,7 +239,7 @@ export default function ProductsAndServicesSection({ id }: { id: string }) {
           <div className="relative w-full max-w-md">
             <input
               type="text"
-              placeholder={t('products.searchPlaceholder')}
+              placeholder="Rechercher un produit ou service..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
@@ -251,65 +251,49 @@ export default function ProductsAndServicesSection({ id }: { id: string }) {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </div>
-
           <div className="flex gap-2">
             <button
               onClick={() => setFilter('all')}
               className={`px-4 py-2 rounded-md ${
-                filter === 'all'
-                  ? 'bg-primary-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                filter === 'all' ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
-              {t('products.all')}
+              Tous
             </button>
             <button
               onClick={() => setFilter('product')}
               className={`px-4 py-2 rounded-md ${
-                filter === 'product'
-                  ? 'bg-primary-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                filter === 'product' ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
-              {t('products.products')}
+              Produits
             </button>
             <button
               onClick={() => setFilter('service')}
               className={`px-4 py-2 rounded-md ${
-                filter === 'service'
-                  ? 'bg-primary-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                filter === 'service' ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
-              {t('products.services')}
+              Services
             </button>
             <button
               onClick={() => setFilter('balance_et_indicateur')}
               className={`px-4 py-2 rounded-md ${
-                filter === 'balance_et_indicateur'
-                  ? 'bg-primary-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                filter === 'balance_et_indicateur' ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
-              Balance et Indicateur
+              Balances et Indicateurs
             </button>
             <button
               onClick={() => setFilter('plateforme_de_pesage')}
               className={`px-4 py-2 rounded-md ${
-                filter === 'plateforme_de_pesage'
-                  ? 'bg-primary-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                filter === 'plateforme_de_pesage' ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
-              Plateforme de Pesage
+              Plateformes de Pesage
             </button>
           </div>
         </div>

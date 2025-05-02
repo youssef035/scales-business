@@ -125,30 +125,30 @@ const products: Product[] = [
   },
   {
     id: 16,
-    name: 'Scale Calibration',
-    description: 'Professional calibration services to ensure accurate measurements',
-    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Scale+Calibration',
+    name: 'Étalonnage de Balances',
+    description: 'Services professionnels d\'étalonnage pour garantir des mesures précises et conformes aux normes',
+    image: '/images/services/calib.jpeg',
     categories: ['service'],
-    details: '',
-    price: ''
+    details: 'Nous proposons des services professionnels d\'étalonnage de balances pour garantir la précision et la conformité de vos instruments de pesage. Grâce à notre expertise et à nos équipements certifiés, nous assurons un étalonnage conforme aux normes en vigueur, adapté aux secteurs industriels, commerciaux et laboratoires. Faites confiance à notre savoir-faire pour maintenir la fiabilité de vos mesures.',
+    price: 'Prix sur demande'
   },
   {
     id: 17,
-    name: 'Scale Repair',
-    description: 'Expert repair services for all types of scales',
-    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Scale+Repair',
+    name: 'Réparation de Balances',
+    description: 'Services de réparation experts pour tous types de balances',
+    image: '/images/services/reparation.jpeg',
     categories: ['service'],
-    details: '',
-    price: ''
+    details: 'Notre équipe d\'experts propose des services de réparation complets pour tous types de balances. Nous intervenons rapidement pour diagnostiquer et réparer les problèmes, qu\'il s\'agisse de dysfonctionnements mécaniques, électroniques ou de problèmes de précision. Nous utilisons des pièces de rechange d\'origine et suivons les protocoles de réparation les plus stricts pour garantir la qualité et la durabilité de nos interventions.',
+    price: 'Prix sur demande'
   },
   {
     id: 18,
-    name: 'Scale Maintenance',
-    description: 'Regular maintenance to keep your scales in optimal condition',
-    image: 'https://placehold.co/600x400/222222/FFFFFF/png?text=Scale+Maintenance',
+    name: 'Maintenance de Balances',
+    description: 'Maintenance préventive et corrective pour garantir le bon fonctionnement et prolonger la durée de vie de vos balances',
+    image: '/images/services/mainten.jpg',
     categories: ['service'],
-    details: '',
-    price: ''
+    details: 'Nous assurons la maintenance préventive et corrective de vos balances afin de garantir leur bon fonctionnement et prolonger leur durée de vie. Nos interventions régulières permettent de prévenir les pannes, réduire les temps d\'arrêt et maintenir la précision de vos instruments de pesage. Notre équipe intervient sur site avec des équipements adaptés et selon un planning flexible, pour s\'adapter à vos contraintes opérationnelles. Faites confiance à notre expertise pour préserver la fiabilité de vos balances au quotidien.',
+    price: 'Prix sur demande'
   }
 ];
 

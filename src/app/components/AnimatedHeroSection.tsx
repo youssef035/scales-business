@@ -53,7 +53,7 @@ export default function AnimatedHeroSection() {
   return (
     <section 
       className="relative overflow-hidden bg-gradient-to-b from-primary-50 to-white py-20"
-      aria-label="Hero Section"
+      aria-label="Section d'accueil"
     >
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
@@ -66,12 +66,12 @@ export default function AnimatedHeroSection() {
           {/* Left side - Text content */}
           <div className="space-y-8">
             <h1 className="text-5xl font-bold text-primary-900 leading-tight">
-              <span className="block mb-2">{t('hero.title')}</span>
+              <span className="block mb-2">Solutions de Pesage Professionnelles</span>
               <span className="text-primary-600">Précision & Qualité</span>
             </h1>
             
             <p className="text-xl text-secondary-600 leading-relaxed">
-              {t('hero.subtitle')}
+              Des solutions de pesage innovantes et fiables pour répondre à tous vos besoins professionnels. Équipements de haute précision et services d'expertise pour garantir des résultats optimaux.
             </p>
 
             {/* Animated numbers */}
@@ -94,14 +94,14 @@ export default function AnimatedHeroSection() {
               <a 
                 href="#contact" 
                 className="bg-primary-600 text-white px-8 py-3 rounded-md hover:bg-primary-700 transition-colors"
-                aria-label="Contact us"
+                aria-label="Contactez-nous"
               >
                 Contactez-nous
               </a>
               <a 
                 href="#products" 
                 className="border-2 border-primary-600 text-primary-600 px-8 py-3 rounded-md hover:bg-primary-50 transition-colors"
-                aria-label="View our products"
+                aria-label="Découvrez nos produits"
                 onClick={(e) => {
                   e.preventDefault();
                   document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
@@ -117,14 +117,14 @@ export default function AnimatedHeroSection() {
             <div 
               ref={scaleRef}
               className="relative w-full h-96 transition-transform duration-1000 ease-in-out"
-              aria-label="Animated scale demonstration"
+              aria-label="Démonstration de balance animée"
             >
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-64 h-64 bg-white rounded-lg shadow-xl p-4">
                   <div className="relative w-full h-full">
                     {/* Scale display */}
                     <div className="absolute top-4 left-4 right-4 h-12 bg-gray-100 rounded-md flex items-center justify-center">
-                      <span className="text-2xl font-bold text-primary-600" aria-label="Current weight">0.00 kg</span>
+                      <span className="text-2xl font-bold text-primary-600" aria-label="Poids actuel">0.00 kg</span>
                     </div>
                     
                     {/* Scale platform */}

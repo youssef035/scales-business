@@ -1,10 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import ProductsAndServicesSection from '../../components/ProductsAndServicesSection';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
+import ContactOverlay from '../../components/ContactOverlay';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface Product {
   id: number;
@@ -181,6 +183,9 @@ const generatePDF = async (product: Product) => {
 };
 
 export default function ProductDetails({ product }: { product: Product }) {
+  const [isContactOverlayOpen, setIsContactOverlayOpen] = useState(false);
+  const { t } = useLanguage();
+
   return (
     <div className="min-h-screen bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -216,8 +221,11 @@ export default function ProductDetails({ product }: { product: Product }) {
             </div>
 
             <div className="flex gap-4">
-              <button className="bg-primary-600 text-white px-8 py-3 rounded-md hover:bg-primary-700 transition-colors">
-                Demander un Devis
+              <button 
+                onClick={() => setIsContactOverlayOpen(true)}
+                className="bg-primary-600 text-white px-8 py-3 rounded-md hover:bg-primary-700 transition-colors"
+              >
+                {t('products.requestQuote')}
               </button>
               <button 
                 onClick={() => generatePDF(product)}
@@ -232,6 +240,11 @@ export default function ProductDetails({ product }: { product: Product }) {
         {/* Products and Services Section */}
         <ProductsAndServicesSection id="featured-products" />
       </div>
+
+      <ContactOverlay 
+        isOpen={isContactOverlayOpen} 
+        onClose={() => setIsContactOverlayOpen(false)} 
+      />
     </div>
   );
 } 

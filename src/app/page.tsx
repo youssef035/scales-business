@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useState } from 'react';
 import ReferencesSection from './components/ReferencesSection';
-import { useLanguage } from './context/LanguageContext';
 import ProductsAndServicesSection from './components/ProductsAndServicesSection';
 import AnimatedHeroSection from './components/AnimatedHeroSection';
 import FloatingFAQButton from './components/FloatingFAQButton';
@@ -22,23 +21,22 @@ interface Product {
 export default function Home() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
-  const { t } = useLanguage();
 
   const openProductOverlay = (product: Product) => {
     setSelectedProduct(product);
     setIsOverlayOpen(true);
-    document.body.style.overflow = 'hidden'; // Prevent scrolling when overlay is open
+    document.body.style.overflow = 'hidden';
   };
 
   const closeProductOverlay = () => {
     setIsOverlayOpen(false);
-    document.body.style.overflow = 'auto'; // Restore scrolling
+    document.body.style.overflow = 'auto';
   };
 
   return (
     <div className="flex flex-col min-h-screen">
       {/* Navigation */}
-      <nav className="bg-white shadow-md" role="navigation" aria-label="Main navigation">
+      <nav className="bg-white shadow-md" role="navigation" aria-label="Navigation principale">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
@@ -53,7 +51,7 @@ export default function Home() {
                   document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
-                {t('nav.products')}
+                Produits
               </a>
               <a 
                 href="#contact" 
@@ -63,7 +61,7 @@ export default function Home() {
                   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
-                {t('nav.contact')}
+                Contact
               </a>
             </div>
           </div>
@@ -84,13 +82,13 @@ export default function Home() {
         <section id="contact" className="bg-primary-50 py-16" aria-labelledby="contact-heading">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 id="contact-heading" className="text-3xl font-bold text-center text-primary-900 mb-12">
-              {t('contact.title')}
+              Contactez-nous
             </h2>
             <div className="max-w-lg mx-auto">
               <form className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-secondary-700">
-                    {t('contact.name')}
+                    Nom
                   </label>
                   <input
                     type="text"
@@ -100,7 +98,7 @@ export default function Home() {
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-secondary-700">
-                    {t('contact.email')}
+                    Email
                   </label>
                   <input
                     type="email"
@@ -110,7 +108,7 @@ export default function Home() {
                 </div>
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-secondary-700">
-                    {t('contact.message')}
+                    Message
                   </label>
                   <textarea
                     id="message"
@@ -123,7 +121,7 @@ export default function Home() {
                     type="submit"
                     className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
                   >
-                    {t('contact.sendMessage')}
+                    Envoyer le message
                   </button>
                 </div>
               </form>
@@ -138,26 +136,26 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Contact Information */}
             <div>
-              <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
-              <p className="text-gray-300">123 Scale Street</p>
-              <p className="text-gray-300">Casablanca, Morocco</p>
-              <p className="text-gray-300">Phone: +212 6XX-XXXXXX</p>
+              <h3 className="text-xl font-semibold mb-4">Contactez-nous</h3>
+              <p className="text-gray-300">123 Rue des Balances</p>
+              <p className="text-gray-300">Casablanca, Maroc</p>
+              <p className="text-gray-300">Téléphone: +212 6XX-XXXXXX</p>
               <p className="text-gray-300">Email: info@omegamesure.com</p>
             </div>
 
             {/* Business Hours */}
             <div>
-              <h3 className="text-xl font-semibold mb-4">Business Hours</h3>
+              <h3 className="text-xl font-semibold mb-4">Horaires d'ouverture</h3>
               <div className="space-y-2 text-gray-300">
-                <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
-                <p>Saturday: 9:00 AM - 1:00 PM</p>
-                <p>Sunday: Closed</p>
+                <p>Lundi - Vendredi: 8h00 - 18h00</p>
+                <p>Samedi: 9h00 - 13h00</p>
+                <p>Dimanche: Fermé</p>
               </div>
             </div>
 
             {/* Social Media */}
             <div>
-              <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
+              <h3 className="text-xl font-semibold mb-4">Suivez-nous</h3>
               <div className="flex space-x-4">
                 <a href="#" className="text-gray-300 hover:text-white transition-colors">
                   <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -185,7 +183,7 @@ export default function Home() {
 
           {/* Copyright */}
           <div className="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
-            <p>&copy; {new Date().getFullYear()} OmegaMesure. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} OmegaMesure. Tous droits réservés.</p>
           </div>
         </div>
       </footer>
@@ -216,12 +214,12 @@ export default function Home() {
                 <p className="mt-2 text-xl text-accent-600 font-medium">{selectedProduct.price}</p>
                 
                 <div className="mt-6">
-                  <h3 className="text-xl font-semibold text-primary-900">{t('products.description')}</h3>
+                  <h3 className="text-xl font-semibold text-primary-900">Description</h3>
                   <p className="mt-2 text-secondary-600">{selectedProduct.details}</p>
                 </div>
                 
                 <div className="mt-6">
-                  <h3 className="text-xl font-semibold text-primary-900">{t('products.specifications')}</h3>
+                  <h3 className="text-xl font-semibold text-primary-900">Spécifications</h3>
                   <ul className="mt-2 space-y-2">
                     {selectedProduct.specifications.map((spec, index) => (
                       <li key={index} className="flex items-start">
@@ -236,10 +234,10 @@ export default function Home() {
                 
                 <div className="mt-8 flex flex-col sm:flex-row gap-4">
                   <button className="bg-primary-600 text-white py-3 px-6 rounded-md font-medium hover:bg-primary-700 transition-colors">
-                    {t('products.requestQuote')}
+                    Demander un devis
                   </button>
                   <button className="border border-primary-600 text-primary-600 py-3 px-6 rounded-md font-medium hover:bg-primary-50 transition-colors">
-                    {t('products.contactSales')}
+                    Contacter le service commercial
                   </button>
                 </div>
               </div>
