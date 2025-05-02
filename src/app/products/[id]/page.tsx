@@ -125,11 +125,11 @@ const products: Product[] = [
 
 interface PageProps {
   params: Promise<{ id: string }>;
-  searchParams?: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export default async function ProductPage({ params }: PageProps) {
-  const resolvedParams = await params;
+export default async function ProductPage({ params, searchParams }: PageProps) {
+  const [resolvedParams, resolvedSearchParams] = await Promise.all([params, searchParams]);
   const productId = parseInt(resolvedParams.id);
   const product = products.find(p => p.id === productId);
 
