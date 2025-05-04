@@ -32,6 +32,49 @@ const generatePDF = async (product: Product) => {
     const lineHeight = 7;
     const margin = 20;
     
+    // Process specifications with better formatting
+    const processSpecifications = (text: string, startY: number) => {
+      const lines = text.split('\n');
+      let currentY = startY;
+      
+      lines.forEach((line) => {
+        if (line.trim()) {
+          // Handle bullet points
+          if (line.includes('•')) {
+            const parts = line.split('•');
+            parts.forEach((part, index) => {
+              if (part.trim()) {
+                if (index === 0) {
+                  // First part (before first bullet)
+                  const firstLines = doc.splitTextToSize(part.trim(), 170);
+                  firstLines.forEach((textLine: string) => {
+                    doc.text(textLine, margin, currentY);
+                    currentY += lineHeight;
+                  });
+                } else {
+                  // Bullet point parts
+                  const bulletLines = doc.splitTextToSize('• ' + part.trim(), 170);
+                  bulletLines.forEach((textLine: string) => {
+                    doc.text(textLine, margin, currentY);
+                    currentY += lineHeight;
+                  });
+                }
+              }
+            });
+          } else {
+            // Regular text without bullets
+            const textLines = doc.splitTextToSize(line.trim(), 170);
+            textLines.forEach((textLine: string) => {
+              doc.text(textLine, margin, currentY);
+              currentY += lineHeight;
+            });
+          }
+          currentY += lineHeight / 2; // Add space between paragraphs
+        }
+      });
+      return currentY;
+    };
+    
     // Add header with company logo and contact info
     doc.setFillColor(240, 240, 240);
     doc.rect(0, 0, 210, 30, 'F');
@@ -46,8 +89,8 @@ const generatePDF = async (product: Product) => {
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(0, 0, 0);
     doc.setFontSize(10);
-    doc.text('Contact: contact@omegamesure.com', 150, 15);
-    doc.text('Tél: +216 XX XXX XXX', 150, 20);
+    doc.text('Contact: info@omegamesure.com', 150, 15);
+    doc.text('Tél: +212 664 323 049', 150, 20);
     
     // Add product image with better quality
     try {
@@ -88,27 +131,14 @@ const generatePDF = async (product: Product) => {
           yPos += lineHeight;
         });
         
-        // Add specifications with better formatting and reduced character spacing
+        // Add specifications with better formatting
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(14);
         doc.text('Spécifications:', margin, yPos + 10);
         
         doc.setFont('helvetica', 'normal');
         doc.setFontSize(11);
-        // Split text into paragraphs and process each paragraph
-        const paragraphs = product.details.split('\n');
-        yPos += 20;
-        
-        paragraphs.forEach((paragraph: string) => {
-          if (paragraph.trim()) {
-            const detailsLines = doc.splitTextToSize(paragraph, 170);
-            detailsLines.forEach((line: string) => {
-              doc.text(line, margin, yPos);
-              yPos += lineHeight;
-            });
-            yPos += lineHeight / 2; // Add small space between paragraphs
-          }
-        });
+        yPos = processSpecifications(product.details, yPos + 20);
         
         // Add footer
         doc.setFont('helvetica', 'normal');
@@ -155,19 +185,8 @@ const generatePDF = async (product: Product) => {
       doc.text('Spécifications:', margin, yPos);
       yPos += 10;
       
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(11);
-      const paragraphs = product.details.split('\n');
-      paragraphs.forEach((paragraph: string) => {
-        if (paragraph.trim()) {
-          const detailsLines = doc.splitTextToSize(paragraph, 170);
-          detailsLines.forEach((line: string) => {
-            doc.text(line, margin, yPos);
-            yPos += lineHeight;
-          });
-          yPos += lineHeight / 2;
-        }
-      });
+      // Use the same processSpecifications function for the fallback case
+      yPos = processSpecifications(product.details, yPos);
       
       // Add footer
       doc.setFont('helvetica', 'normal');

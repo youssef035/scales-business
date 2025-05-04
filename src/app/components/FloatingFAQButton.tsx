@@ -1,12 +1,13 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { FaQuestionCircle } from 'react-icons/fa';
 
 export default function FloatingFAQButton() {
   const [isVisible, setIsVisible] = useState(false);
   const [isMessageVisible, setIsMessageVisible] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
+  const messageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -24,6 +25,22 @@ export default function FloatingFAQButton() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (messageRef.current && !messageRef.current.contains(event.target as Node)) {
+        setIsMessageVisible(false);
+      }
+    };
+
+    if (isMessageVisible) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMessageVisible]);
+
   const handleClick = () => {
     setIsMessageVisible(!isMessageVisible);
   };
@@ -33,13 +50,25 @@ export default function FloatingFAQButton() {
   return (
     <div className="fixed bottom-24 right-6 z-50">
       {isMessageVisible && (
-        <div className="absolute bottom-16 right-0 bg-white p-4 rounded-lg shadow-lg w-64 animate-fadeIn">
+        <div ref={messageRef} className="absolute bottom-16 right-0 bg-white p-4 rounded-lg shadow-lg w-64 animate-fadeIn">
           <p className="text-gray-800 mb-2">Comment pouvons-nous vous aider aujourd'hui ?</p>
           <div className="flex space-x-2">
-            <button className="bg-primary-600 text-white px-3 py-1 rounded text-sm hover:bg-primary-700 transition-colors">
+            <button 
+              onClick={() => {
+                document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+                setIsMessageVisible(false);
+              }}
+              className="bg-primary-600 text-white px-3 py-1 rounded text-sm hover:bg-primary-700 transition-colors"
+            >
               Products
             </button>
-            <button className="bg-primary-600 text-white px-3 py-1 rounded text-sm hover:bg-primary-700 transition-colors">
+            <button 
+              onClick={() => {
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                setIsMessageVisible(false);
+              }}
+              className="bg-primary-600 text-white px-3 py-1 rounded text-sm hover:bg-primary-700 transition-colors"
+            >
               Contact
             </button>
           </div>

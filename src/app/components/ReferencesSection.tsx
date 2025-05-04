@@ -54,11 +54,11 @@ const references: Reference[] = [
   }
 ];
 
-export default function ReferencesSection() {
+export default function ReferencesSection({ id }: { id: string }) {
   const { t } = useLanguage();
 
   return (
-    <section className="py-20 bg-white">
+    <section id={id} className="py-20 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <RevealOnScroll>
           <h2 className="text-4xl font-bold text-center mb-12 text-primary-900">

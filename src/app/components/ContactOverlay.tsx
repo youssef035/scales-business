@@ -37,7 +37,7 @@ export default function ContactOverlay({ isOpen, onClose }: ContactOverlayProps)
             </div>
             <div>
               <p className="text-sm text-gray-500">Téléphone</p>
-              <p className="text-lg font-semibold text-primary-900">+216 XX XXX XXX</p>
+              <p className="text-lg font-semibold text-primary-900">+212 664 323 049</p>
             </div>
           </div>
 
