@@ -136,13 +136,12 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 }
 
 interface PageProps {
-  params: Promise<{ id: string }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  params: { id: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-export default async function ProductPage({ params, searchParams }: PageProps) {
-  const [resolvedParams, resolvedSearchParams] = await Promise.all([params, searchParams]);
-  const productId = parseInt(resolvedParams.id);
+export default function ProductPage({ params, searchParams }: PageProps) {
+  const productId = parseInt(params.id);
   const product = products.find(p => p.id === productId);
 
   if (!product) {

@@ -4,8 +4,8 @@ import ServiceDetails from './ServiceDetails';
 import { services } from '@/data/services';
 
 interface PageProps {
-  params: Promise<{ id: string }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  params: { id: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
@@ -20,9 +20,8 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   };
 }
 
-export default async function ServicePage({ params, searchParams }: PageProps) {
-  const [resolvedParams, resolvedSearchParams] = await Promise.all([params, searchParams]);
-  const serviceId = parseInt(resolvedParams.id);
+export default function ServicePage({ params, searchParams }: PageProps) {
+  const serviceId = parseInt(params.id);
   const service = services.find(s => s.id === serviceId);
 
   if (!service) {
