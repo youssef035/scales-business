@@ -123,6 +123,18 @@ const products: Product[] = [
   }
 ];
 
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const productId = parseInt(params.id);
+  const product = products.find(p => p.id === productId);
+  if (!product) {
+    return { title: 'Produit non trouvé | OmegaMesure' };
+  }
+  return {
+    title: `${product.name} | OmegaMesure`,
+    description: product.description,
+  };
+}
+
 interface PageProps {
   params: Promise<{ id: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;

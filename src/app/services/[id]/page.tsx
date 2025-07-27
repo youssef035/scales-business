@@ -8,6 +8,18 @@ interface PageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const serviceId = parseInt(params.id);
+  const service = services.find(s => s.id === serviceId);
+  if (!service) {
+    return { title: 'Service non trouvé | OmegaMesure' };
+  }
+  return {
+    title: `${service.name} | OmegaMesure`,
+    description: service.description,
+  };
+}
+
 export default async function ServicePage({ params, searchParams }: PageProps) {
   const [resolvedParams, resolvedSearchParams] = await Promise.all([params, searchParams]);
   const serviceId = parseInt(resolvedParams.id);
